@@ -19,20 +19,19 @@ public class School {
         math.setStudents(karl);
         math.setStudents(peep);
         math.setStudents(peep);
-        math.students.add(karl);
-//        math.students.add(karl);
-//        math.students.add(peep);
-//        math.students.add(peep);
+
         System.out.println(math.getStudents());
         System.out.println("");
-        System.out.println(grammar.getNumOfStudents());   // SEE EI TÖÖTA
+        System.out.println("Number of students on Grammar course: " + grammar.getNumOfStudents());
         grammar.printStudentList();
-        System.out.println(math.getNumOfStudents());   // SEE EI TÖÖTA
+        System.out.println("Number of students on Math course: " + math.getNumOfStudents());
         math.printStudentList();
 
-        karl.setGrades("math", 3);
-        karl.grades.put("grammar", 2.0);
+        karl.setGrades("math", 3f);    // ei tööta
+        peep.grades.put("grammar", 2.0f);           // ei tööta
+        System.out.println(peep.grades.keys());
         System.out.println(karl.grades.keys());
+        System.out.println(peep.getGrades().keys());
 
     }
 }

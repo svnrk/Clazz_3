@@ -14,7 +14,7 @@ public class Student {
     String date;
     Date birthday; // = dateFormat.parse (date);
     float avgGrade;
-    Dictionary grades = new Hashtable() {
+    Dictionary<String, Float> grades = new Dictionary<String, Float>() {
         @Override
         public int size() {
             return 0;
@@ -26,27 +26,27 @@ public class Student {
         }
 
         @Override
-        public Enumeration keys() {
+        public Enumeration<String> keys() {
             return null;
         }
 
         @Override
-        public Enumeration elements() {
+        public Enumeration<Float> elements() {
             return null;
         }
 
         @Override
-        public Object get(Object key) {
+        public Float get(Object key) {
             return null;
         }
 
         @Override
-        public Object put(Object key, Object value) {
+        public Float put(String key, Float value) {
             return null;
         }
 
         @Override
-        public Object remove(Object key) {
+        public Float remove(Object key) {
             return null;
         }
     };

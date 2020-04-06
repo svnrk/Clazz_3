@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cd1ca302-7e76-4a7c-8302-28219a73dee8" name="Default Changelist" comment="" />
+    <list default="true" id="cd1ca302-7e76-4a7c-8302-28219a73dee8" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/School.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/School.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Student.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,6 +19,9 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="MavenImportPreferences">
     <option name="importingSettings">
       <MavenImportingSettings>
@@ -22,6 +30,7 @@
     </option>
   </component>
   <component name="ProjectId" id="1a8AdgYKaCCRYVJwFwZGYY7NssP" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -29,6 +38,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -83,22 +93,22 @@
       <screen x="0" y="23" width="1920" height="1131" />
     </state>
     <state x="773" y="311" key="#com.intellij.ide.util.MemberChooser/0.23.1920.1131@0.23.1920.1131" timestamp="1586161375006" />
-    <state width="1358" height="271" key="GridCell.Tab.0.bottom" timestamp="1586162413222">
+    <state width="1358" height="271" key="GridCell.Tab.0.bottom" timestamp="1586170352259">
       <screen x="0" y="23" width="1920" height="1131" />
     </state>
-    <state width="1358" height="271" key="GridCell.Tab.0.bottom/0.23.1920.1131@0.23.1920.1131" timestamp="1586162413222" />
-    <state width="1358" height="271" key="GridCell.Tab.0.center" timestamp="1586162413221">
+    <state width="1358" height="271" key="GridCell.Tab.0.bottom/0.23.1920.1131@0.23.1920.1131" timestamp="1586170352259" />
+    <state width="1358" height="271" key="GridCell.Tab.0.center" timestamp="1586170352259">
       <screen x="0" y="23" width="1920" height="1131" />
     </state>
-    <state width="1358" height="271" key="GridCell.Tab.0.center/0.23.1920.1131@0.23.1920.1131" timestamp="1586162413221" />
-    <state width="1358" height="271" key="GridCell.Tab.0.left" timestamp="1586162413221">
+    <state width="1358" height="271" key="GridCell.Tab.0.center/0.23.1920.1131@0.23.1920.1131" timestamp="1586170352259" />
+    <state width="1358" height="271" key="GridCell.Tab.0.left" timestamp="1586170352258">
       <screen x="0" y="23" width="1920" height="1131" />
     </state>
-    <state width="1358" height="271" key="GridCell.Tab.0.left/0.23.1920.1131@0.23.1920.1131" timestamp="1586162413221" />
-    <state width="1358" height="271" key="GridCell.Tab.0.right" timestamp="1586162413222">
+    <state width="1358" height="271" key="GridCell.Tab.0.left/0.23.1920.1131@0.23.1920.1131" timestamp="1586170352258" />
+    <state width="1358" height="271" key="GridCell.Tab.0.right" timestamp="1586170352259">
       <screen x="0" y="23" width="1920" height="1131" />
     </state>
-    <state width="1358" height="271" key="GridCell.Tab.0.right/0.23.1920.1131@0.23.1920.1131" timestamp="1586162413222" />
+    <state width="1358" height="271" key="GridCell.Tab.0.right/0.23.1920.1131@0.23.1920.1131" timestamp="1586170352259" />
     <state x="461" y="227" key="SettingsEditor" timestamp="1586157422891">
       <screen x="0" y="23" width="1920" height="1131" />
     </state>
