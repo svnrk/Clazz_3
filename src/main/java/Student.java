@@ -1,114 +1,48 @@
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Dictionary;
-import java.util.Enumeration;
-import java.util.Hashtable;
+import java.util.*;
 
-public class Student {
-    static int counter=0;
-    int id;
-    String firstName;
-    String lastName;
-    SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-    String date;
-    Date birthday; // = dateFormat.parse (date);
-    float avgGrade;
-    Dictionary<String, Float> grades = new Dictionary<String, Float>() {
-        @Override
-        public int size() {
-            return 0;
-        }
+public class Student extends PersonImpl{
+    private List<Course> courses;
+    private static List<Student> students = new ArrayList<>();
 
-        @Override
-        public boolean isEmpty() {
-            return false;
-        }
-
-        @Override
-        public Enumeration<String> keys() {
-            return null;
-        }
-
-        @Override
-        public Enumeration<Float> elements() {
-            return null;
-        }
-
-        @Override
-        public Float get(Object key) {
-            return null;
-        }
-
-        @Override
-        public Float put(String key, Float value) {
-            return null;
-        }
-
-        @Override
-        public Float remove(Object key) {
-            return null;
-        }
-    };
-
-    public Student(String firstName, String lastName, String date, float avgGrade) {
-        this.id = counter+1;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        try {this.birthday = dateFormat.parse (date);} catch (ParseException e) {
-            e.printStackTrace();
-        }
-        this.avgGrade = avgGrade;
-        counter++;
+    public Student(String firstName, String lastName) {
+        super(firstName, lastName);
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public Date getBirthday() {
-        return birthday;
-    }
-
-    public void setBirthday(String date) {
-        try {this.birthday = dateFormat.parse (date);} catch (ParseException e) {
-            e.printStackTrace();
+    public Student(String firstName, String lastName, String preferredName, String date) {
+        super(firstName, lastName, preferredName, date);
+        courses = new ArrayList<>();
+        if (!students.contains(this)){
+            students.add(this);
         }
     }
 
-    public float getAvgGrade() {
-        return avgGrade;
+    @Override
+    public void sayHello(){
+        System.out.println("Hello student, " + getFullName());
     }
 
-    public void setAvgGrade(float avgGrade) {
-        this.avgGrade = avgGrade;
+    public void addCourse(Course course) {
+        if (!courses.contains(course)) {
+            courses.add(course);
+            course.addStudent(this);
+        }
     }
 
-    public void setGrades(String clazz, float grade){
-        this.grades.put(clazz, grade);
+    public List<Course> getCourses() {
+        return courses;
     }
 
-    public Dictionary getGrades() {
-        return grades;
+    public List<String> getTeachers(){
+        List<String> teachers = new ArrayList<>();
+
+        for (Course course : courses){
+            String teacherName = course.getTeacher().getFullName();
+            teachers.add(teacherName);
+        }
+        return teachers;
+    }
+
+    public static List<Student> getAllStudents() {
+        return students;
     }
 }
