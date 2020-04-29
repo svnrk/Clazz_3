@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Course {
+    private int output;
     private String name;
     private Integer eap;
     private ZonedDateTime startDate;
@@ -48,8 +49,14 @@ public class Course {
         return endDate;
     }
 
-    public Integer getLength(){
-        return DateMachine.getPeriodLengthDays(startDate, endDate);
+    public Integer getLength() {
+        return DateMachine.getPeriodLengthDays(startDate, endDate) + 1;
+    }
+
+    public Integer getNumberOfActualWorkDays() {
+        DateMachine dateMachine = new DateMachine();
+        output = dateMachine.getDiminishedNumberOfWorkDays(startDate, endDate);
+        return output;
     }
 
     public Teacher getTeacher() {

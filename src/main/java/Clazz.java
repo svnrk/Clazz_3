@@ -14,7 +14,7 @@ public class Clazz {
     public Clazz(String name) {
         this.name = name;
         this.id = counter;
-        this.students = new ArrayList<Student>();
+        this.students = new ArrayList<>();
         this.numOfStudents = this.students.size();
         counter++;
     }
@@ -44,11 +44,11 @@ public class Clazz {
         this.numOfStudents = numOfStudents;
     }
 
-    public void printStudentList() {
-        for (int i = 0; i<students.size(); i++){
-            System.out.print(this.getStudents().get(i).getId() + " ");
-            System.out.print(this.getStudents().get(i).getFirstName() + " ");
-            System.out.println(this.getStudents().get(i).getLastName());
-        }
-    }
+//    public void printStudentList() {
+//        for (int i = 0; i<students.size(); i++){
+//            System.out.print(this.getStudents().get(i).getId() + " ");
+//            System.out.print(this.getStudents().get(i).getFirstName() + " ");
+//            System.out.println(this.getStudents().get(i).getLastName());
+//        }
+//    }
 }
