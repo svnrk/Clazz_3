@@ -75,18 +75,31 @@ public class DateMachine {
 
     public int getDiminishedNumberOfWorkDays(ZonedDateTime startDate, ZonedDateTime endDate) {
         List<ZonedDateTime> holidays = new ArrayList<>();
+        PublicHolidayService service = new PublicHolidayService();
         int yearStart = startDate.getYear();
         int yearEnd = endDate.getYear();
 //        System.out.println(yearStart);
         List<ZonedDateTime> workDays = getWorkDaysInPeriod(startDate, endDate);
         for (int i = yearStart; i <= yearEnd; i++) {
-            holidays.addAll(PublicHolidayService.getPublicHolidays(Integer.toString(i)));
+            holidays.addAll(service.getPublicHolidays(Integer.toString(i)));
         }
-//        System.out.println(workDays);
         workDays.removeAll(holidays);
-//        System.out.println(workDays);
 
         return workDays.size();
     }
 
+    public List<ZonedDateTime> getHolidaysInPeriod(ZonedDateTime startDate, ZonedDateTime endDate) {
+        PublicHolidayService service = new PublicHolidayService();
+        List<ZonedDateTime> holidays = new ArrayList<>();
+        int yearStart = startDate.getYear();
+        int yearEnd = endDate.getYear();
+        for (int i = yearStart; i <= yearEnd; i++) {
+            holidays.addAll(service.getPublicHolidays(Integer.toString(i)));
+        }
+//        String yearString = Integer.toString(yearStart);
+//        List<ZonedDateTime> holidays = service.getPublicHolidays(yearString);
+        holidays.removeIf(holiday -> (holiday.isBefore(startDate)) || (holiday.isAfter(endDate)));
+
+        return holidays;
+    }
 }

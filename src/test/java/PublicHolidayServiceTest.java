@@ -9,9 +9,10 @@ public class PublicHolidayServiceTest {
 
     @Test
     public void testURL() {
+        PublicHolidayService service = new PublicHolidayService();
 
 //        service.getPublicHolidays("2020");
-        List output = PublicHolidayService.getPublicHolidays("2020");
+        List output = service.getPublicHolidays("2020");
         System.out.println(output.toString());
     }
 

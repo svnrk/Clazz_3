@@ -16,7 +16,7 @@ public class PublicHolidayService {
     private static final String COUNTRY_CODE = "EE";
     private static final String API_URL = "https://date.nager.at/api/v2/PublicHolidays/";
 
-    public static List<ZonedDateTime> getPublicHolidays(String year) {
+    public List<ZonedDateTime> getPublicHolidays(String year) {
         List<ZonedDateTime> result = new ArrayList<>();
         String composedUrl = API_URL + year + "/" + COUNTRY_CODE;
 
