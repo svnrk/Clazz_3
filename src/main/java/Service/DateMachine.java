@@ -1,6 +1,5 @@
 package Service;
 
-import java.security.Provider;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
@@ -13,6 +12,7 @@ public class DateMachine {
     public static String dateString;
     public static ZoneId zone1 = ZoneId.of("Europe/Tallinn");
     public static DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+    PublicHolidayService service = new PublicHolidayService();
 
     public static ZonedDateTime dateStringToZDT(String dateString) {
         ZonedDateTime result = null;
@@ -32,6 +32,7 @@ public class DateMachine {
             LocalDate date = LocalDate.parse(dateString, dateFormat);
             result = date.atStartOfDay(zone1);
         } catch (Exception e) {
+            System.out.println("error");
         }
         return result;
     }
@@ -75,7 +76,7 @@ public class DateMachine {
 
     public int getDiminishedNumberOfWorkDays(ZonedDateTime startDate, ZonedDateTime endDate) {
         List<ZonedDateTime> holidays = new ArrayList<>();
-        PublicHolidayService service = new PublicHolidayService();
+
         int yearStart = startDate.getYear();
         int yearEnd = endDate.getYear();
 //        System.out.println(yearStart);
@@ -89,7 +90,7 @@ public class DateMachine {
     }
 
     public List<ZonedDateTime> getHolidaysInPeriod(ZonedDateTime startDate, ZonedDateTime endDate) {
-        PublicHolidayService service = new PublicHolidayService();
+
         List<ZonedDateTime> holidays = new ArrayList<>();
         int yearStart = startDate.getYear();
         int yearEnd = endDate.getYear();

@@ -1,4 +1,5 @@
 import Service.DateMachine;
+import Service.TimePeriod;
 
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
@@ -14,12 +15,14 @@ public class Course {
     private String endDateString;
     private Teacher teacher;
     private List<Student> students = new ArrayList<>();
+    private TimePeriod timePeriod;
 
     public Course(String name, int eap, String startDateString, String endDateString, Teacher teacher) {
         this.name = name;
         this.eap = eap;
         this.startDate = DateMachine.dateStringToZDT(startDateString);
         this.endDate = DateMachine.dateStringToZDT(endDateString);
+        this.timePeriod = new TimePeriod(startDate, endDate);
         this.teacher = teacher;
     }
 
@@ -50,13 +53,11 @@ public class Course {
     }
 
     public Integer getLength() {
-        return DateMachine.getPeriodLengthDays(startDate, endDate) + 1;
+        return timePeriod.getPeriodLengthDays() + 1;
     }
 
     public Integer getNumberOfActualWorkDays() {
-        DateMachine dateMachine = new DateMachine();
-        output = dateMachine.getDiminishedNumberOfWorkDays(startDate, endDate);
-        return output;
+        return timePeriod.getDiminishedNumberOfWorkDays();
     }
 
     public Teacher getTeacher() {

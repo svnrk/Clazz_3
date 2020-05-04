@@ -22,7 +22,7 @@ public class DateMachineTest {
     String dateString6 = "24-04-2020";
     String dateString7 = "15-12-2020";
     String dateString8 = "05-01-2021";
-    DateMachine dateMachine = new DateMachine();
+//    DateMachine dateMachine = new DateMachine();
 
     @Test
     public void convertsStringToZDT() {
@@ -38,10 +38,10 @@ public class DateMachineTest {
         ZonedDateTime input1 = DateMachine.dateStringToZDT(dateString1);
         ZonedDateTime input2 = DateMachine.dateStringToZDT(dateString3);
         int output3 = DateMachine.getPeriodLengthDays(input1, input2);
-        Assert.assertEquals(output3, 6666);
+        Assert.assertEquals(6666, output3);
 
         int output4 = DateMachine.getPeriodLengthDays(input2, input1);
-        Assert.assertEquals(output4, -6666);
+        Assert.assertEquals(-6666, output4);
     }
 
     @Test
@@ -49,21 +49,21 @@ public class DateMachineTest {
         ZonedDateTime input1 = DateMachine.dateStringToZDT(dateString1);
         ZonedDateTime input2 = DateMachine.dateStringToZDT(dateString3);
         int output3 = DateMachine.getPeriodLengthYears(input1, input2);
-        Assert.assertEquals(output3, 18);
+        Assert.assertEquals(18, output3);
 
         int output4 = DateMachine.getPeriodLengthYears(input2, input1);
-        Assert.assertEquals(output4, -18);
+        Assert.assertEquals(-18, output4);
     }
 
     @Test
     public void calculatesAge() {
         ZonedDateTime input1 = DateMachine.dateStringToZDT(dateString1);
         int output5 = DateMachine.getAgeInYears(input1);
-        Assert.assertEquals(output5, 18);
+        Assert.assertEquals(18, output5);
 
         ZonedDateTime input2 = DateMachine.dateStringToZDT(dateString4);
         int output6 = DateMachine.getAgeInYears(input2);
-        Assert.assertEquals(output6, -9);
+        Assert.assertEquals(-9, output6);
 
     }
 
@@ -72,7 +72,7 @@ public class DateMachineTest {
         ZonedDateTime input1 = DateMachine.dateStringToZDT(dateString5);
         ZonedDateTime input2 = DateMachine.dateStringToZDT(dateString6);
         int output7 = DateMachine.getNumberOfWorkDaysInPeriod(input1, input2);
-        Assert.assertEquals(output7, 9);
+        Assert.assertEquals(9, output7);
 
     }
 
@@ -82,9 +82,10 @@ public class DateMachineTest {
         ZonedDateTime input2 = DateMachine.dateStringToZDT(dateString6);
         List output7 = DateMachine.getWorkDaysInPeriod(input1, input2);
         System.out.println(output7.toString());
-        Assert.assertEquals(output7.size(), 9);
+        Assert.assertEquals(9, output7.size());
 
     }
+
 
     @Test
     public void crossreferencesListOfHolidaysToListOfWorkDaysInPeriod() {
@@ -94,20 +95,21 @@ public class DateMachineTest {
         System.out.println(DateMachine.getWorkDaysInPeriod(input1, input2));
         System.out.println(DateMachine.getNumberOfWorkDaysInPeriod(input1, input2));
         System.out.println(dateMachine.getDiminishedNumberOfWorkDays(input1, input2));
-        Assert.assertEquals(output7, 12);
+        Assert.assertEquals(15, output7);
 
     }
 
+
     @Mock
-    private PublicHolidayService service;
+    private PublicHolidayService service = new PublicHolidayService();
 
     @InjectMocks
-    private DateMachine mockDateMachine;
+    private DateMachine dateMachine = new DateMachine();
 
-//    @Before
-////    public void init() {
-////        MockitoAnnotations.initMocks(this);
-////    }
+    @Before
+    public void init() {
+        MockitoAnnotations.initMocks(this);
+    }
 
     @Test
     public void crossreferencesListOfHolidaysToListOfWorkDaysInPeriodWithMock() {
@@ -118,36 +120,40 @@ public class DateMachineTest {
         mock.add(input1);
         mock.add(input3);
         when(service.getPublicHolidays("2020")).thenReturn(mock);
+
         System.out.println(mock.toString());
-        int result = mockDateMachine.getDiminishedNumberOfWorkDays(input1, input2);
+
+        int result = dateMachine.getDiminishedNumberOfWorkDays(input1, input2);
+
         System.out.println(service.getPublicHolidays("2020"));
         System.out.println(DateMachine.getWorkDaysInPeriod(input1, input2));
-        Assert.assertEquals(result, 1);
+
+        Assert.assertEquals(1, result);
     }
 
-    @Mock
-    private PublicHolidayService service2;
-
-    @InjectMocks
-    private DateMachine mockDateMachine2;
-
-    @Before
-    public void init() {
-        MockitoAnnotations.initMocks(this);
-    }
-
-    @Test
-    public void getListOfHolidaysWithMock() {
-        ZonedDateTime input1 = DateMachine.dateStringToZDT("15-12-2020");
-        ZonedDateTime input2 = DateMachine.dateStringToZDT("18-12-2020");
-        ZonedDateTime input3 = DateMachine.dateStringToZDT("16-12-2020");
-        List<ZonedDateTime> mock = new ArrayList<>();
-        mock.add(input3);
-        when(service2.getPublicHolidays("2020")).thenReturn(mock);
-        System.out.println(mock.toString());
-        System.out.println(service2.getPublicHolidays("2020"));
-        System.out.println(mockDateMachine2.getHolidaysInPeriod(input1, input2));
-        int result = mockDateMachine2.getDiminishedNumberOfWorkDays(input1, input2);
-        Assert.assertEquals(result, 1);
-    }
+//    @Mock
+//    private PublicHolidayService service2;
+//
+//    @InjectMocks
+//    private DateMachine mockDateMachine2;
+//
+//    @Before
+//    public void init() {
+//        MockitoAnnotations.initMocks(this);
+//    }
+//
+//    @Test
+//    public void getListOfHolidaysWithMock() {
+//        ZonedDateTime input1 = DateMachine.dateStringToZDT("15-12-2020");
+//        ZonedDateTime input2 = DateMachine.dateStringToZDT("18-12-2020");
+//        ZonedDateTime input3 = DateMachine.dateStringToZDT("16-12-2020");
+//        List<ZonedDateTime> mock = new ArrayList<>();
+//        mock.add(input3);
+//        when(service2.getPublicHolidays("2020")).thenReturn(mock);
+//        System.out.println(mock.toString());
+//        System.out.println(service2.getPublicHolidays("2020"));
+//        System.out.println(mockDateMachine2.getHolidaysInPeriod(input1, input2));
+//        int result = mockDateMachine2.getDiminishedNumberOfWorkDays(input1, input2);
+//        Assert.assertEquals(result, 1);
+//    }
 }
